@@ -47,13 +47,12 @@ public class Asset {
     this.asset_status_id = asset_status_id;
   }
 
-  public Asset(Integer id, String name, String damageLevel, Integer asset_type_id, Integer asset_status_id) {
+  public Asset(Integer id, String name, Integer asset_type_id, Integer asset_status_id, String damageLevel) {
     this.id = id;
     this.name = name;
-    this.damageLevel = damageLevel;
     this.asset_type_id = asset_type_id;
     this.asset_status_id = asset_status_id;
+    this.damageLevel = damageLevel;
   }
 
-  
 }

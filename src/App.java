@@ -1,5 +1,7 @@
+import dao.AssetDAOInterface;
 import dao.implementation.AssetDAO;
 import dao.implementation.UserDAO;
+import models.Asset;
 import models.User;
 import tools.DbConnection;
 
@@ -32,6 +34,29 @@ public class App {
         }
         else {
             System.out.println("Login failed!");
+        }
+
+        AssetDAOInterface assetDAO = new AssetDAO(connection.getConnection());
+        // Menampilkan semua asset
+        System.err.println("List Semua Asset");
+        for(Asset asset : assetDAO.get()){
+            System.out.println("Asset ID: " + asset.getId());
+            System.out.println("Asset Name: " + asset.getName());
+            System.out.println("Asset Type: " + asset.getAsset_type_id());
+            System.out.println("Asset Status: " + asset.getAsset_status_id());
+            System.out.println("Asset Damage Level: " + asset.getDamageLevel());
+            System.out.println("-----------------------------------------------------");
+        }
+        System.out.println("======================================================================");
+        // Menampilkan semua asset berdasarkan tipe dan status
+        System.out.println("List semua asset berdasarkan tipe dan status");
+        for(Asset asset : assetDAO.get(1, 1)){
+            System.out.println("Asset ID: " + asset.getId());
+            System.out.println("Asset Name: " + asset.getName());
+            System.out.println("Asset Type: " + asset.getAsset_type_id());
+            System.out.println("Asset Status: " + asset.getAsset_status_id());
+            System.out.println("Asset Damage Level: " + asset.getDamageLevel());
+            System.out.println("-----------------------------------------------------");
         }
     }
 }
